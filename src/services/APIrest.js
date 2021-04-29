@@ -1,0 +1,1 @@
+export const Apiurl = "https://dev.tuten.cl/TutenREST/rest/user/testapis%40tuten.cl";
