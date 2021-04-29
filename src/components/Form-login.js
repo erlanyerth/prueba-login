@@ -7,10 +7,9 @@ import axios from 'axios';
 class Form extends React.Component {
     state={
         form:{
+            "app":"APP_BCK",
             "email":"",
-            "password":"",
-            "app":"",
-            "Accept": "application/json"
+            "password":""
         },
         error:false,
         errorMsg:""
@@ -19,7 +18,7 @@ class Form extends React.Component {
     manejadorSubmit2=e=>{
         e.preventDefault();
     }
-    //toma los cambios dentro del input y se los pasa a una variable 
+    //toma los cambios dentro del input y se los pasa a una variable (setear) 
     manejadorChange = async e =>{
         await this.setState({
             form:{
@@ -27,12 +26,13 @@ class Form extends React.Component {
                 [e.target.name]: e.target.value
             }
         })
-        //console.log(this.state.form);
+        console.log(this.state.form);
     }
     manejadorButton=()=>{
         let url = Apiurl;
-        axios.get(url,this.state.form)
-        .then( response =>{
+        let datos = this.state.form;
+        axios.put(url, datos)
+        .then((response) =>{
             console.log(response);
         })
     }
@@ -49,7 +49,6 @@ class Form extends React.Component {
                 <form onSubmit={this.manejadorSubmit2}>
                 <input type="email" className="fadeIn second" name="email" onChange={this.manejadorChange} placeholder="Email" required/>
                 <input type="password" className="fadeIn third" name="password" onChange={this.manejadorChange} placeholder="Password" required/>
-                <input type="text" className="fadeIn third" name="app" onChange={this.manejadorChange} placeholder="App" required/>
                 <input type="submit" className="fadeIn fourth" value="Log In" onClick={this.manejadorButton}/>
                 </form>
                 <div id="formFooter">
