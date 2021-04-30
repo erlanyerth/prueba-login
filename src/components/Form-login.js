@@ -5,9 +5,11 @@ import {Apiurl} from '../services/APIrest'
 import axios from 'axios';
 
 class Form extends React.Component {
+    //constructor(props){
+     //   super(props)}
+    
     state={
         form:{
-            "app":"APP_BCK",
             "email":"",
             "password":""
         },
@@ -26,15 +28,40 @@ class Form extends React.Component {
                 [e.target.name]: e.target.value
             }
         })
-        console.log(this.state.form);
+        //console.log(this.state.form);
     }
+    //metodo que permite enviar la solicitud al servidor
     manejadorButton=()=>{
         let url = Apiurl;
         let datos = this.state.form;
-        axios.put(url, datos)
+        axios.put(url, {
+            datos
+           },
+           {
+             headers: {
+               app: "APP_BCK",
+               password: "1234"
+             }
+           })
         .then((response) =>{
             console.log(response);
-        })
+            localStorage.setItem("token", response.data.sessionTokenBck);
+            //this.props.history.push("/home");
+            //if (response.data.status === "ok"){
+            //    console.log(response);
+            //}else{
+            //    this.setState({
+             //       error: true,
+             //       errorMsg: "Información Incorrecta"
+             //   })
+           // }
+        }).catch(error =>{
+            console.log(error.message);
+            this.setState({
+                error: true,
+                errorMsg: "Error al conectar con la api"
+            })
+        });
     }
     render(){
         return(
@@ -51,9 +78,11 @@ class Form extends React.Component {
                 <input type="password" className="fadeIn third" name="password" onChange={this.manejadorChange} placeholder="Password" required/>
                 <input type="submit" className="fadeIn fourth" value="Log In" onClick={this.manejadorButton}/>
                 </form>
-                <div id="formFooter">
-                <a className="underlineHover" href="#">Forgot Password?</a>
+                {this.state.error === true &&
+                <div className="alert alert-danger" role="alert">
+                    {this.state.errorMsg}
                 </div>
+                }
             </div>
             </div>
         </section>
