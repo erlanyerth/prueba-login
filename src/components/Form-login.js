@@ -10,8 +10,11 @@ class Form extends React.Component {
     
     state={
         form:{
-            "email":"",
-            "password":""
+            "email":""
+        },
+        cabezera:{
+            "app": "APP_BCK",
+            "password": ""
         },
         error:false,
         errorMsg:""
@@ -26,22 +29,25 @@ class Form extends React.Component {
             form:{
                 ...this.state.form,
                 [e.target.name]: e.target.value
+            },
+            cabezera:{
+                ...this.state.cabezera,
+                [e.target.name]: e.target.value
             }
         })
-        //console.log(this.state.form);
+        //console.log(this.state.cabezera);
+       // console.log(this.state.form);
     }
     //metodo que permite enviar la solicitud al servidor
     manejadorButton=()=>{
         let url = Apiurl;
         let datos = this.state.form;
+        let cabezera = this.state.cabezera;
         axios.put(url, {
             datos
            },
            {
-             headers: {
-               app: "APP_BCK",
-               password: "1234"
-             }
+             headers: cabezera
            })
         .then((response) =>{
             console.log(response);
@@ -78,11 +84,7 @@ class Form extends React.Component {
                 <input type="password" className="fadeIn third" name="password" onChange={this.manejadorChange} placeholder="Password" required/>
                 <input type="submit" className="fadeIn fourth" value="Log In" onClick={this.manejadorButton}/>
                 </form>
-                {this.state.error === true &&
-                <div className="alert alert-danger" role="alert">
-                    {this.state.errorMsg}
-                </div>
-                }
+               
             </div>
             </div>
         </section>
