@@ -51,7 +51,7 @@ class Form extends React.Component {
            })
         .then((response) =>{
             console.log(response);
-            localStorage.setItem("token", response.data.sessionTokenBck); //guarda el token en el navegador
+            localStorage.setItem("token", response.data.sessionTokenBck); //guarda el token en el navegador para usarlo posteriormente
             //this.props.history.push("/home");
             //if (response.data.status === "ok"){
             //    console.log(response);
