@@ -12,7 +12,7 @@ class Form extends React.Component {
         form:{
             "email":""
         },
-        cabezera:{
+        cabecera:{
             "app": "APP_BCK",
             "password": ""
         },
@@ -30,8 +30,8 @@ class Form extends React.Component {
                 ...this.state.form,
                 [e.target.name]: e.target.value
             },
-            cabezera:{
-                ...this.state.cabezera,
+            cabecera:{
+                ...this.state.cabecera,
                 [e.target.name]: e.target.value
             }
         })
@@ -42,12 +42,12 @@ class Form extends React.Component {
     manejadorButton=()=>{
         let url = Apiurl;
         let datos = this.state.form;
-        let cabezera = this.state.cabezera;
+        let cabecera = this.state.cabecera;
         axios.put(url, {
             datos
            },
            {
-             headers: cabezera
+             headers: cabecera
            })
         .then((response) =>{
             console.log(response);
