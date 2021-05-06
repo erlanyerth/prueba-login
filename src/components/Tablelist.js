@@ -8,7 +8,7 @@ function list(props){
             <div className="row">
                 <div className="panel panel-primary filterable">
                     <div className="panel-heading">
-                        <h3 className="panel-title">Listado de datos</h3>
+                        <h3 className="panel-title">Data List</h3>
                         <div className="pull-right">
                             <button type="submit" className="btn btn-primary">Filter</button>
                         </div>
@@ -16,11 +16,11 @@ function list(props){
                     <table className="table">
                         <thead className="table-light">
                             <tr className="filters">
-                                <th><input type="text" className="form-control" placeholder="BookingId" disabled/></th>
-                                <th><input type="text" className="form-control" placeholder="Cliente" disabled/></th>
-                                <th><input type="text" className="form-control" placeholder="Fecha de creación " disabled/></th>
-                                <th><input type="text" className="form-control" placeholder="Dirección" disabled/></th>
-                                <th><input type="text" className="form-control" placeholder="Precio" disabled/></th>
+                                <th><input type="text" className="form-control" placeholder="Booking Id" disabled/></th>
+                                <th><input type="text" className="form-control" placeholder="Customer" disabled/></th>
+                                <th><input type="text" className="form-control" placeholder="creation date" disabled/></th>
+                                <th><input type="text" className="form-control" placeholder="Street Address" disabled/></th>
+                                <th><input type="text" className="form-control" placeholder="Price" disabled/></th>
                             </tr>
                         </thead>
                         <tbody id="myTable">

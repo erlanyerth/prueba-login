@@ -2,7 +2,6 @@ import React from 'react'
 import Tablelist from '../components/Tablelist'
 import axios from 'axios';
 
-//const accessToken = "stestapis@tuten.cllr91m1s5lrd1nfd9fo8bu39o56";
 const apiUrl = "https://dev.tuten.cl/TutenREST/rest/user/contacto%40tuten.cl/bookings?current=true";
 
 const  authAxios = axios.create ({
@@ -31,7 +30,6 @@ class home extends React.Component {
         authAxios.get()
         .then((response) =>{
             console.log(response);
-            //let data = await result.json()
             this.setState({
                 data: response.data
             })
