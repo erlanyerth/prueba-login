@@ -7,8 +7,8 @@ function App(){
     return (
         <BrowserRouter>
         <Switch>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/home" component={Home} />
+            <Route exact path="/" render = { props=> ( <Login {...props} />)}   />
+            <Route exact path="/home" render = { props=> ( <Home {...props} />)}  />
         </Switch>
         </BrowserRouter>
     )
